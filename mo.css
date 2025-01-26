@@ -1,0 +1,538 @@
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap');
+
+body {
+    font-family: 'Tajawal', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background: linear-gradient(135deg, #1a2b3c 0%, #2d4356 100%);
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+header {
+    text-align: center;
+    margin-top: 20px;
+    padding: 20px;
+    width: 100%;
+    max-width: 900px;
+    position: relative;
+    background: rgba(45, 67, 86, 0.7);
+    backdrop-filter: blur(20px);
+    border-radius: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    font-size: 2.8rem;
+    background: linear-gradient(120deg, #de004b, #bf46ff, #00d4ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 20px;
+    font-weight: 800;
+}
+
+header p {
+    font-size: 1.2rem;
+    color: #cccccc;
+    margin-top: 0;
+    line-height: 1.6;
+}
+
+.buttons-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    width: 100%;
+    max-width: 1400px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.buttons-container.active {
+    display: grid;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    position: relative;
+}
+
+main {
+    position: relative;
+    min-height: 500px;
+}
+
+.tool-card {
+    --bg: #2d4356;
+    --contrast: #1a2b3c;
+    --grey: #4a90e2;
+    position: relative;
+    padding: 9px;
+    background-color: var(--bg);
+    border-radius: 35px;
+    box-shadow: 
+        rgba(0, 0, 0, 0.4) 0px 50px 100px -20px, 
+        rgba(0, 0, 0, 0.4) 0px 30px 60px -30px, 
+        rgba(0, 0, 0, 0.4) 0px -2px 6px 0px inset;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.tool-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: repeating-conic-gradient(var(--bg) 0.0000001%, var(--grey) 0.000104%) 60% 60%/600% 600%;
+    filter: opacity(10%) contrast(105%);
+    border-radius: 35px;
+}
+
+.card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: var(--contrast);
+    border-radius: 30px;
+    padding: 20px;
+    position: relative;
+    min-height: 180px;
+    overflow: hidden;
+}
+
+.canvas {
+    perspective: 800px;
+    inset: 0;
+    z-index: 200;
+    position: absolute;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+}
+
+/* إضافة الـ trackers */
+.tracker {
+    position: relative;
+    z-index: 200;
+    width: 100%;
+    height: 100%;
+}
+
+.tracker:hover {
+    cursor: pointer;
+}
+
+.tracker:hover ~ .card-inner {
+    transition: 300ms;
+    filter: brightness(1.1);
+}
+
+/* تأثيرات التحويم */
+.tracker:nth-child(1):hover ~ .card-inner {
+    transform: rotateX(20deg) rotateY(-10deg);
+}
+
+.tracker:nth-child(2):hover ~ .card-inner {
+    transform: rotateX(20deg) rotateY(0deg);
+}
+
+.tracker:nth-child(3):hover ~ .card-inner {
+    transform: rotateX(20deg) rotateY(10deg);
+}
+
+/* ... وهكذا لباقي المناطق */
+
+.tool-card:hover {
+    transform: translateY(-10px);
+    --bg: #3d5369;
+    --contrast: #2d4356;
+    --grey: #5a9ae6;
+}
+
+.site-logo {
+    display: none;
+}
+
+.site-logo img {
+    display: none;
+}
+
+.tool-card h2 {
+    font-size: 1.6rem;
+    background: linear-gradient(120deg, #4a90e2, #357abd);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 15px 0;
+    font-weight: 700;
+    text-align: center;
+}
+
+.card-description {
+    font-size: 1rem;
+    color: #cccccc;
+    margin: 10px 0 5px;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 3em;
+    max-height: 3em;
+}
+
+.ai-button {
+    padding: 17px 40px;
+    border-radius: 50px;
+    cursor: pointer;
+    border: 0;
+    background-color: #2d4356;
+    color: #ffffff;
+    box-shadow: rgb(0 0 0 / 20%) 0 0 8px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    font-family: 'Tajawal', sans-serif;
+    width: auto;
+    margin: 10px auto;
+    display: block;
+}
+
+.ai-button:hover {
+    letter-spacing: 3px;
+    background-color: #4a90e2;
+    color: #ffffff;
+    box-shadow: rgb(74 144 226 / 30%) 0px 7px 29px 0px;
+}
+
+.ai-button:active {
+    letter-spacing: 3px;
+    background-color: #357abd;
+    color: #ffffff;
+    box-shadow: none;
+    transform: translateY(10px);
+    transition: 100ms;
+}
+
+.ai-button:disabled {
+    cursor: auto;
+    color: #a1a1aa;
+    background-color: #f4f4f5;
+    box-shadow: 0 0.4rem #e4e4e7;
+}
+
+/* إزالة التأثيرات السابقة */
+.star-1, .star-2, .star-3, .star-4, .star-5, .star-6, .fil0 {
+    display: none;
+}
+
+footer {
+    margin-top: 40px;
+    padding: 30px;
+    text-align: center;
+    width: 100%;
+    background: rgba(45, 67, 86, 0.7);
+    backdrop-filter: blur(20px);
+    border-top: 1px solid rgba(74, 144, 226, 0.2);
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+footer p {
+    font-size: 1.1rem;
+    color: #cccccc;
+    font-weight: 500;
+}
+
+.social-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: #ffffff;
+    background: linear-gradient(
+        90deg,
+        rgba(45, 45, 45, 1) 0%,
+        rgba(74, 74, 74, 1) 49%,
+        rgba(45, 45, 45, 1) 100%
+    );
+    padding: 12px 24px;
+    border-radius: 12px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.social-link:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+.instagram-icon {
+    width: 28px;
+    height: 28px;
+    filter: brightness(0) invert(1);
+}
+
+.social-link span {
+    color: white;
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+/* تحديث الهوامش للشاشات الصغيرة */
+@media screen and (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    header {
+        margin-bottom: 20px;
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    header p {
+        font-size: 1rem;
+    }
+}
+
+/* تحديث شبكة البطاقات */
+.buttons-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    width: 100%;
+    max-width: 1400px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* تحسين البطاقات للموبايل */
+@media screen and (max-width: 480px) {
+    .buttons-container {
+        gap: 20px;
+        padding: 15px;
+    }
+
+    .tool-card {
+        margin-right: 0;
+    }
+
+    .tool-card:focus-within,
+    .tool-card.active {
+        transform: translateY(-10px);
+    }
+
+    .buttons-container::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .buttons-container {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    .card-content {
+        padding: 25px 15px 15px;
+        min-height: 180px;
+    }
+
+    .tool-card h2 {
+        font-size: 1.4rem;
+        background: linear-gradient(120deg, #4a90e2, #357abd);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .card-description {
+        font-size: 0.9rem;
+        height: 2.7em;
+        max-height: 2.7em;
+    }
+
+    .ai-button {
+        width: 85%;
+        padding: 10px 15px;
+    }
+
+    .site-logo {
+        width: 45px;
+        height: 45px;
+        padding: 8px;
+        top: -25px;
+    }
+}
+
+/* تحسين الفوتر للموبايل */
+@media screen and (max-width: 480px) {
+    footer {
+        margin-top: 20px;
+        padding: 20px;
+    }
+
+    footer p {
+        font-size: 1rem;
+    }
+
+    .social-link {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+
+    .instagram-icon {
+        width: 24px;
+        height: 24px;
+    }
+}
+
+/* تحسين التفاعلات للشاشات اللمسية */
+@media (hover: none) {
+    .tool-card:hover {
+        transform: none;
+    }
+
+    .ai-button:hover {
+        letter-spacing: 1.5px;
+        background-color: #2d2d2d;
+        box-shadow: rgb(0 0 0 / 20%) 0 0 8px;
+    }
+
+    .tab-button:hover {
+        letter-spacing: 1.5px;
+        background-color: #2d2d2d;
+        box-shadow: rgb(0 0 0 / 20%) 0 0 8px;
+    }
+}
+
+.logo-container {
+    text-align: center;
+    padding: 20px 0;
+    margin-bottom: 30px;
+    background: none;
+    backdrop-filter: none;
+    border-radius: 0;
+}
+
+.brand-title {
+    font-size: 4rem;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    background: linear-gradient(120deg, #4a90e2, #357abd);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 800;
+}
+
+.brand-subtitle {
+    font-size: 2rem;
+    margin: 5px 0;
+    padding: 0;
+    line-height: 1;
+    background: linear-gradient(120deg, #357abd, #4a90e2);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 500;
+}
+
+.description {
+    font-size: 1.3rem;
+    margin: 15px 0 0;
+    padding: 0;
+    line-height: 1.4;
+    color: #ffffff;
+    opacity: 0.9;
+    font-weight: 300;
+}
+
+.logo {
+    max-width: 300px;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+@media screen and (max-width: 480px) {
+    .logo {
+        max-width: 200px;
+    }
+    .brand-title {
+        font-size: 2.5rem;
+    }
+    .brand-subtitle {
+        font-size: 1.4rem;
+        letter-spacing: 6px;
+    }
+}
+
+.tabs-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.tab-button {
+    padding: 17px 40px;
+    border-radius: 50px;
+    cursor: pointer;
+    border: 0;
+    background-color: #2d4356;
+    color: #ffffff;
+    box-shadow: rgb(0 0 0 / 20%) 0 0 8px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    font-family: 'Tajawal', sans-serif;
+}
+
+.tab-button:hover {
+    letter-spacing: 3px;
+    background-color: #4a90e2;
+    color: #ffffff;
+    box-shadow: rgb(74 144 226 / 30%) 0px 7px 29px 0px;
+}
+
+.tab-button:active {
+    letter-spacing: 3px;
+    background-color: #357abd;
+    color: #ffffff;
+    box-shadow: none;
+    transform: translateY(10px);
+    transition: 100ms;
+}
+
+.tab-button.active {
+    letter-spacing: 3px;
+    background-color: #4a90e2;
+    color: #ffffff;
+    box-shadow: rgb(74 144 226 / 30%) 0px 7px 29px 0px;
+}
+
+.buttons-container {
+    display: none;
+}
+
+.buttons-container.active {
+    display: grid;
+}

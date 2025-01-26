@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تيكنو - منصة الخدمات الرقمية</title>
+    <link rel="stylesheet" href="mo.css">
+</head>
+<body>
+    <div class="logo-container">
+        <h1 class="brand-title">تيكنو</h1>
+        <h2 class="brand-subtitle">TECHNO</h2>
+        <p class="description">منصة متخصصة في تقديم أفضل الخدمات والأدوات الرقمية المجانية</p>
+    </div>
+    <header>
+        <div class="tabs-container">
+            <button class="tab-button active" onclick="switchTab('ai')">
+                <span>الذكاء الاصطناعي</span>
+            </button>
+            <button class="tab-button" onclick="switchTab('movies')">
+                <span>مواقع الأفلام</span>
+            </button>
+            <button class="tab-button" onclick="switchTab('books')">
+                <span>تحميل الكتب</span>
+            </button>
+            <button class="tab-button" onclick="switchTab('bots')">
+                <span>بوتات تيليجرام</span>
+            </button>
+        </div>
+    </header>
+    <main>
+        <section id="ai-section" class="buttons-container active">
+            <div class="tool-card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/ChatGPT_logo.svg/1024px-ChatGPT_logo.svg.png" alt="ChatGPT Logo" class="site-logo">
+                <div class="card-content">
+                    <h2>إنشاء المحادثات</h2>
+                    <p class="card-description">مساعد ذكي للمحادثة والكتابة الإبداعية والبرمجة</p>
+                    <button class="ai-button" onclick="redirectTo('https://chat.openai.com')">
+                        ChatGPT
+                        <svg class="star-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 784.11 815.53">
+                            <path class="fil0" d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z"/>
+                        </svg>
+                        <svg class="star-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 784.11 815.53">
+                            <path class="fil0" d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z"/>
+                        </svg>
+                        <svg class="star-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 784.11 815.53">
+                            <path class="fil0" d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z"/>
+                        </svg>
+                        <svg class="star-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 784.11 815.53">
+                            <path class="fil0" d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z"/>
+                        </svg>
+                        <svg class="star-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 784.11 815.53">
+                            <path class="fil0" d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z"/>
+                        </svg>
+                        <svg class="star-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 784.11 815.53">
+                            <path class="fil0" d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="tool-card">
+                <img src="https://soundraw.io/images/logo.svg" alt="Soundraw Logo" class="site-logo">
+                <div class="card-content">
+                    <h2>Soundraw</h2>
+                    <p class="card-description">أداة لإنشاء موسيقى أصلية باستخدام الذكاء الاصطناعي، يمكنك تخصيص النغمة، السرعة، والنمط</p>
+                    <button class="ai-button" onclick="redirectTo('https://soundraw.io')">Soundraw</button>
+                </div>
+            </div>
+            <div class="tool-card">
+                <img src="https://leonardo.ai/favicon.ico" alt="Leonardo AI Logo" class="site-logo">
+                <div class="card-content">
+                    <h2>Leonardo AI</h2>
+                    <p class="card-description">منصة متقدمة لإنشاء وتحرير الصور باستخدام الذكاء الاصطناعي</p>
+                    <button class="ai-button" onclick="redirectTo('https://leonardo.ai')">Leonardo</button>
+                </div>
+            </div>
+            <div class="tool-card">
+                <img src="https://www.synthesia.io/assets/favicon/apple-touch-icon.png" alt="Synthesia Logo" class="site-logo">
+                <div class="card-content">
+                    <h2>Synthesia</h2>
+                    <p class="card-description">إنشاء مقاطع فيديو احترافية باستخدام أفتارات واقعية</p>
+                    <button class="ai-button" onclick="redirectTo('https://www.synthesia.io')">Synthesia</button>
+                </div>
+            </div>
+            <div class="tool-card">
+                <img src="https://www.deepseek.com/_next/static/media/logo.0e814912.svg" alt="DeepSeek Logo" class="site-logo">
+                <div class="card-content">
+                    <h2>DeepSeek</h2>
+                    <p class="card-description">نموذج لغوي متقدم يدعم المحادثة والبرمجة والتحليل مع قدرات متعددة</p>
+                    <button class="ai-button" onclick="redirectTo('https://chat.deepseek.com')">DeepSeek</button>
+                </div>
+            </div>
+            <div class="tool-card">
+                <img src="https://assets.quizlet.com/a/j/dist/i/logo/2021/q-twilight.0ee16dc25b9172.svg" alt="Quizlet Logo" class="site-logo">
+                <div class="card-content">
+                    <h2>Quizlet</h2>
+                    <p class="card-description">أداة لإنشاء البطاقات التعليمية والمراجعة بطريقة تفاعلية، تساعد الطلاب على حفظ المعلومات بسهولة</p>
+                    <button class="ai-button" onclick="redirectTo('https://quizlet.com')">Quizlet</button>
+                </div>
+            </div>
+            <div class="tool-card">
+                <img src="https://www.notion.so/front-static/logo-ios.png" alt="Notion Logo" class="site-logo">
+                <div class="card-content">
+                    <h2>Notion AI</h2>
+                    <p class="card-description">مساعد ذكي داخل تطبيق Notion يساعد في تنظيم المهام، كتابة الملاحظات، وإنشاء خطط بذكاء</p>
+                    <button class="ai-button" onclick="redirectTo('https://www.notion.so')">Notion AI</button>
+                </div>
+            </div>
+            <div class="tool-card">
+                <img src="https://www.gstatic.com/lamda/images/notebook_favicon_v1.svg" alt="NotebookLM Logo" class="site-logo">
+                <div class="card-content">
+                    <h2>شرح مستندات</h2>
+                    <p class="card-description">محلل ذكي للمستندات والنصوص مع دعم كامل للغة العربية</p>
+                    <button class="ai-button" onclick="redirectTo('https://notebooklm.google/')">NotebookLM</button>
+                </div>
+            </div>
+            <div class="tool-card">
+                    <img src="https://placehold.co/100x100?text=AI" alt="Coming Soon" class="site-logo">
+                <div class="card-content">
+                    <h2>مربع إضافي 1</h2>
+                    <p class="card-description">خدمة جديدة قادمة قريباً - ترقبوا المزيد</p>
+                    <button class="ai-button" onclick="redirectTo('#')">قريباً</button>
+                </div>
+            </div>
+            <div class="tool-card">
+                    <img src="https://placehold.co/100x100?text=AI" alt="Coming Soon" class="site-logo">
+                <div class="card-content">
+                    <h2>مربع إضافي 2</h2>
+                    <p class="card-description">قريباً - خدمة جديدة</p>
+                    <button class="ai-button" onclick="redirectTo('#')">قريباً</button>
+                </div>
+            </div>
+            <div class="tool-card">
+                    <img src="https://placehold.co/100x100?text=AI" alt="Coming Soon" class="site-logo">
+                <div class="card-content">
+                    <h2>مربع إضافي 3</h2>
+                    <p class="card-description">قريباً - خدمة جديدة</p>
+                    <button class="ai-button" onclick="redirectTo('#')">قريباً</button>
+                </div>
+            </div>
+            <div class="tool-card">
+                <img src="https://telegram.org/img/t_logo.svg" alt="Telegram Logo" class="site-logo">
+                <div class="card-content">
+                    <h2>قناة تكنو</h2>
+                    <p class="card-description">قناة متخصصة في التقنية والتكنولوجيا والذكاء الاصطناعي</p>
+                    <button class="ai-button" onclick="redirectTo('https://t.me/techno_channel')">اشترك الآن</button>
+                </div>
+            </div>
+            <div class="tool-card">
+                <img src="https://telegram.org/img/t_logo.svg" alt="Telegram Logo" class="site-logo">
+                <div class="card-content">
+                    <h2>مجتمع المطورين</h2>
+                    <p class="card-description">مجموعة نشطة للمبرمجين والمطورين لتبادل الخبرات والمعرفة</p>
+                    <button class="ai-button" onclick="redirectTo('https://t.me/dev_community')">انضم الآن</button>
+                </div>
+            </div>
+            <div class="tool-card">
+                <img src="https://telegram.org/img/t_logo.svg" alt="Telegram Logo" class="site-logo">
+                <div class="card-content">
+                    <h2>تحديثات تقنية</h2>
+                    <p class="card-description">آخر الأخبار والتحديثات في عالم التكنولوجيا والذكاء الاصطناعي</p>
+                    <button class="ai-button" onclick="redirectTo('https://t.me/tech_updates')">اشترك الآن</button>
+                </div>
+            </div>
+        </section>
+        
+        <section id="movies-section" class="buttons-container">
+            <div class="tool-card">
+                <img src="https://watchseries.pe/favicon.ico" alt="WatchSeries" class="site-logo">
+                <div class="card-content">
+                    <h2>WatchSeries</h2>
+                    <p class="card-description">منصة لمشاهدة الأفلام والمسلسلات مع تصنيفات حسب البلد والنوع</p>
+                    <button class="ai-button" onclick="redirectTo('https://watchseries.pe/home')">شاهد الآن</button>
+                </div>
+            </div>
+            <div class="tool-card">
+                <img src="https://fmhy.net/favicon.ico" alt="FMHY" class="site-logo">
+                <div class="card-content">
+                    <h2>FMHY</h2>
+                    <p class="card-description">دليل شامل لمواقع المشاهدة والتحميل مع تحديثات مستمرة</p>
+                    <button class="ai-button" onclick="redirectTo('https://fmhy.net/downloadpiracyguide')">تصفح الدليل</button>
+                </div>
+            </div>
+            <div class="tool-card">
+                <img src="https://xprime.tv/favicon.ico" alt="XPrime" class="site-logo">
+                <div class="card-content">
+                    <h2>XPrime</h2>
+                    <p class="card-description">منصة عرض أفلام ومسلسلات مع تصنيف TOP 10 للأكثر مشاهدة</p>
+                    <button class="ai-button" onclick="redirectTo('https://xprime.tv/')">شاهد الآن</button>
+                </div>
+            </div>
+            <div class="tool-card">
+                <img src="https://pcmirror.cc/favicon.ico" alt="PCMirror" class="site-logo">
+                <div class="card-content">
+                    <h2>PCMirror</h2>
+                    <p class="card-description">موقع مشاهدة أفلام ومسلسلات مجاني مع جودة عالية وترجمة احترافية</p>
+                    <button class="ai-button" onclick="redirectTo('https://pcmirror.cc/home')">شاهد الآن</button>
+                </div>
+            </div>
+            <div class="tool-card">
+                <img src="https://www.vidbinge.com/favicon.ico" alt="VidBinge" class="site-logo">
+                <div class="card-content">
+                    <h2>VidBinge</h2>
+                    <p class="card-description">منصة مشاهدة مجانية للأفلام والمسلسلات مع واجهة سهلة الاستخدام</p>
+                    <button class="ai-button" onclick="redirectTo('https://www.vidbinge.com/discover')">شاهد الآن</button>
+                </div>
+            </div>
+            <div class="tool-card">
+                <img src="https://www.hydraflix.vip/favicon.ico" alt="HydraFlix" class="site-logo">
+                <div class="card-content">
+                    <h2>HydraFlix</h2>
+                    <p class="card-description">منصة مجانية لمشاهدة الأفلام والمسلسلات مع تصنيفات متعددة وجودة عالية</p>
+                    <button class="ai-button" onclick="redirectTo('https://www.hydraflix.vip/home/')">شاهد الآن</button>
+                </div>
+            </div>
+            <div class="tool-card">
+                <img src="https://moviedb.wiki/favicon.ico" alt="MovieDB" class="site-logo">
+                <div class="card-content">
+                    <h2>MovieDB</h2>
+                    <p class="card-description">قاعدة بيانات ضخمة للأفلام مع تصنيفات متعددة وتحديثات مستمرة</p>
+                    <button class="ai-button" onclick="redirectTo('https://moviedb.wiki')">شاهد الآن</button>
+                </div>
+            </div>
+            <div class="tool-card">
+                <img src="https://flixtorus.info/favicon.ico" alt="Flixtorus" class="site-logo">
+                <div class="card-content">
+                    <h2>Flixtorus</h2>
+                    <p class="card-description">موقع لمشاهدة أحدث الأفلام والمسلسلات مجاناً مع تحديثات يومية</p>
+                    <button class="ai-button" onclick="redirectTo('https://flixtorus.info/en')">شاهد الآن</button>
+                </div>
+            </div>
+        </section>
+        
+        <section id="books-section" class="buttons-container">
+            <!-- قسم الكتب فارغ جاهز للإضافة -->
+        </section>
+        
+        <section id="bots-section" class="buttons-container">
+            <div class="tool-card">
+                <img src="https://telegram.org/img/t_logo.svg" alt="Telegram Bot" class="site-logo">
+                <div class="card-content">
+                    <h2>بوت 1</h2>
+                    <p class="card-description">وصف البوت الأول</p>
+                    <button class="ai-button" onclick="redirectTo('#')">فتح البوت</button>
+                </div>
+            </div>
+            <div class="tool-card">
+                <img src="https://telegram.org/img/t_logo.svg" alt="Telegram Bot" class="site-logo">
+                <div class="card-content">
+                    <h2>بوت 2</h2>
+                    <p class="card-description">وصف البوت الثاني</p>
+                    <button class="ai-button" onclick="redirectTo('#')">فتح البوت</button>
+                </div>
+            </div>
+            <div class="tool-card">
+                <img src="https://telegram.org/img/t_logo.svg" alt="Telegram Bot" class="site-logo">
+                <div class="card-content">
+                    <h2>بوت 3</h2>
+                    <p class="card-description">وصف البوت الثالث</p>
+                    <button class="ai-button" onclick="redirectTo('#')">فتح البوت</button>
+                </div>
+            </div>
+            <!-- يمكنك إضافة المزيد من البوتات هنا -->
+        </section>
+    </main>
+    <footer>
+        <p>&copy; جميع الحقوق محفوضة باسم محمد جميل </p>
+        <a href="https://www.instagram.com/cvcons/" class="social-link" target="_blank">
+            <svg class="instagram-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                <path fill="currentColor" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/>
+            </svg>
+            <span>تابعني على انستجرام</span>
+        </a>
+    </footer>
+    <script>
+        function redirectTo(url) {
+            window.open(url, '_blank');
+        }
+        
+        function switchTab(tabName) {
+            // إخفاء جميع الأقسام
+            document.getElementById('ai-section').classList.remove('active');
+            document.getElementById('movies-section').classList.remove('active');
+            document.getElementById('books-section').classList.remove('active');
+            document.getElementById('bots-section').classList.remove('active');
+            
+            // إظهار القسم المحدد
+            document.getElementById(tabName + '-section').classList.add('active');
+            
+            // تحديث حالة الأزرار
+            const buttons = document.querySelectorAll('.tab-button');
+            buttons.forEach(button => button.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+    </script>
+    <script src="mo.js"></script>
+</body>
+</html>
