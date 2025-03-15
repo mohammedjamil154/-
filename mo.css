@@ -44,26 +44,64 @@ header p {
 }
 
 .buttons-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px;
-    width: 100%;
-    max-width: 1400px;
-    padding: 20px;
-    box-sizing: border-box;
+    display: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease-in-out;
 }
 
 .buttons-container.active {
     display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 15px;
+    width: 100%;
+    max-width: 1400px;
+    padding: 15px;
+    box-sizing: border-box;
     opacity: 1;
     visibility: visible;
-    transform: translateY(0);
-    position: relative;
+    max-height: calc(100vh - 250px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: #4a90e2 transparent;
+}
+
+/* تنسيق شريط التمرير للمربعات - إزالة الخط الأزرق على اليسار */
+.buttons-container.active::-webkit-scrollbar {
+    width: 8px;
+}
+
+.buttons-container.active::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 10px;
+}
+
+.buttons-container.active::-webkit-scrollbar-thumb {
+    background: #4a90e2;
+    border-radius: 10px;
+}
+
+.buttons-container.active::-webkit-scrollbar-thumb:hover {
+    background: #357abd;
 }
 
 main {
     position: relative;
-    min-height: 500px;
+    min-height: calc(100vh - 280px);
+    padding-bottom: 80px;
+    width: 100%;
+    max-width: 1400px;
+    margin-top: 10px;
+}
+
+.logo-container {
+    text-align: center;
+    padding: 15px 0;
+    margin-bottom: 10px;
+    background: none;
+    backdrop-filter: none;
+    border-radius: 0;
 }
 
 .tool-card {
@@ -71,7 +109,7 @@ main {
     --contrast: #1a2b3c;
     --grey: #4a90e2;
     position: relative;
-    padding: 9px;
+    padding: 10px;
     background-color: var(--bg);
     border-radius: 35px;
     box-shadow: 
@@ -79,6 +117,8 @@ main {
         rgba(0, 0, 0, 0.4) 0px 30px 60px -30px, 
         rgba(0, 0, 0, 0.4) 0px -2px 6px 0px inset;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    animation: cardAppear 0.5s ease-out forwards;
+    cursor: pointer;
 }
 
 .tool-card::after {
@@ -98,10 +138,11 @@ main {
     align-items: center;
     background-color: var(--contrast);
     border-radius: 30px;
-    padding: 20px;
+    padding: 25px;
     position: relative;
-    min-height: 180px;
+    min-height: 200px;
     overflow: hidden;
+    user-select: none;
 }
 
 .canvas {
@@ -162,7 +203,7 @@ main {
 }
 
 .tool-card h2 {
-    font-size: 1.6rem;
+    font-size: 1.7rem;
     background: linear-gradient(120deg, #4a90e2, #357abd);
     -webkit-background-clip: text;
     background-clip: text;
@@ -173,9 +214,9 @@ main {
 }
 
 .card-description {
-    font-size: 1rem;
+    font-size: 1.05rem;
     color: #cccccc;
-    margin: 10px 0 5px;
+    margin: 12px 0 8px;
     line-height: 1.5;
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -184,52 +225,51 @@ main {
     text-overflow: ellipsis;
     height: 3em;
     max-height: 3em;
+    text-align: center;
 }
 
 .ai-button {
-    padding: 17px 40px;
-    border-radius: 50px;
+    appearance: none;
+    background-color: transparent;
+    border: 0.125em solid #4a90e2;
+    border-radius: 0.9375em;
+    box-sizing: border-box;
+    color: #4a90e2;
     cursor: pointer;
-    border: 0;
-    background-color: #2d4356;
-    color: #ffffff;
-    box-shadow: rgb(0 0 0 / 20%) 0 0 8px;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    font-size: 15px;
-    transition: all 0.3s ease;
-    font-family: 'Tajawal', sans-serif;
-    width: auto;
-    margin: 10px auto;
+    display: inline-block;
+    font-family: 'Tajawal', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: normal;
+    margin: 10px auto 5px;
+    min-height: 2.75em;
+    min-width: 0;
+    outline: none;
+    padding: 0.6em 1.5em;
+    text-align: center;
+    text-decoration: none;
+    transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    will-change: transform;
     display: block;
 }
 
+.ai-button:disabled {
+    pointer-events: none;
+}
+
 .ai-button:hover {
-    letter-spacing: 3px;
+    color: #fff;
     background-color: #4a90e2;
-    color: #ffffff;
-    box-shadow: rgb(74 144 226 / 30%) 0px 7px 29px 0px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+    transform: translateY(-2px);
 }
 
 .ai-button:active {
-    letter-spacing: 3px;
-    background-color: #357abd;
-    color: #ffffff;
     box-shadow: none;
-    transform: translateY(10px);
-    transition: 100ms;
-}
-
-.ai-button:disabled {
-    cursor: auto;
-    color: #a1a1aa;
-    background-color: #f4f4f5;
-    box-shadow: 0 0.4rem #e4e4e7;
-}
-
-/* إزالة التأثيرات السابقة */
-.star-1, .star-2, .star-3, .star-4, .star-5, .star-6, .fil0 {
-    display: none;
+    transform: translateY(0);
 }
 
 footer {
@@ -245,6 +285,8 @@ footer {
     flex-direction: column;
     align-items: center;
     gap: 20px;
+    box-sizing: border-box;
+    padding-bottom: 100px;
 }
 
 footer p {
@@ -288,114 +330,312 @@ footer p {
     font-size: 1.1rem;
 }
 
-/* تحديث الهوامش للشاشات الصغيرة */
+/* شريط التنقل السفلي الجديد */
+.mobile-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(26, 43, 60, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: space-around;
+    padding: 15px 5px;
+    z-index: 1000;
+    border-top: 1px solid rgba(74, 144, 226, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.mobile-nav.nav-hidden {
+    transform: translateY(100%);
+}
+
+.nav-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: none;
+    border: none;
+    padding: 8px 5px;
+    color: #cccccc;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Tajawal', sans-serif;
+    position: relative;
+}
+
+.nav-button svg {
+    width: 22px;
+    height: 22px;
+    margin-bottom: 6px;
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.2));
+}
+
+.nav-button span {
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.nav-button:before {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 3px;
+    background: #4a90e2;
+    border-radius: 3px;
+    transition: width 0.3s ease;
+}
+
+.nav-button.active:before {
+    width: 30px;
+    animation: glowEffect 1.5s infinite alternate;
+}
+
+.nav-button.active {
+    color: #4a90e2;
+    transform: translateY(-3px);
+}
+
+.nav-button.active svg {
+    transform: scale(1.2);
+    filter: drop-shadow(0 3px 5px rgba(74, 144, 226, 0.4));
+}
+
+.nav-button:not(.active):hover {
+    color: #9cc3f5;
+    transform: translateY(-2px);
+}
+
+.nav-button:not(.active):hover svg {
+    transform: scale(1.1);
+}
+
+/* تأثير النقر على أزرار التنقل */
+.nav-button.nav-clicked {
+    animation: buttonClick 0.3s ease;
+}
+
+/* تحسين الأنيميشن */
+@keyframes glowEffect {
+    0% {
+        box-shadow: 0 0 5px rgba(74, 144, 226, 0.5);
+    }
+    100% {
+        box-shadow: 0 0 15px rgba(74, 144, 226, 0.8);
+    }
+}
+
+@keyframes buttonClick {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(0.9);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes cardAppear {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* تحسين المظهر على الجوال وتخفيف البهتان */
 @media screen and (max-width: 768px) {
     body {
-        padding: 10px;
+        padding: 15px 10px;
     }
     
-    header {
-        margin-bottom: 20px;
-        padding: 15px;
+    .logo-container {
+        padding: 5px 0 10px;
+        margin-bottom: 5px;
     }
-
-    h1 {
-        font-size: 2rem;
+    
+    .brand-title {
+        font-size: 2.3rem;
     }
-
-    header p {
+    
+    .brand-subtitle {
+        font-size: 1.3rem;
+    }
+    
+    .description {
         font-size: 1rem;
     }
-}
-
-/* تحديث شبكة البطاقات */
-.buttons-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px;
-    width: 100%;
-    max-width: 1400px;
-    padding: 20px;
-    box-sizing: border-box;
-}
-
-/* تحسين البطاقات للموبايل */
-@media screen and (max-width: 480px) {
-    .buttons-container {
-        gap: 20px;
-        padding: 15px;
-    }
-
-    .tool-card {
-        margin-right: 0;
-    }
-
-    .tool-card:focus-within,
-    .tool-card.active {
-        transform: translateY(-10px);
-    }
-
-    .buttons-container::-webkit-scrollbar {
-        display: none;
+    
+    .buttons-container.active {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        padding: 8px;
+        max-height: calc(100vh - 200px);
     }
     
-    .buttons-container {
-        -ms-overflow-style: none;
-        scrollbar-width: none;
+    .tool-card {
+        padding: 8px;
+        border-radius: 25px;
     }
-
+    
     .card-content {
-        padding: 25px 15px 15px;
-        min-height: 180px;
+        border-radius: 20px;
+        padding: 18px 12px;
+        min-height: 165px;
     }
-
+    
     .tool-card h2 {
         font-size: 1.4rem;
-        background: linear-gradient(120deg, #4a90e2, #357abd);
-        -webkit-background-clip: text;
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
+        margin: 8px 0;
     }
-
+    
     .card-description {
+        font-size: 0.95rem;
+        margin: 6px 0;
+        height: 2.8em;
         font-size: 0.9rem;
-        height: 2.7em;
-        max-height: 2.7em;
+        margin: 5px 0;
+        height: 2.6em;
+        max-height: 2.6em;
     }
-
+    
     .ai-button {
-        width: 85%;
-        padding: 10px 15px;
+        font-size: 12px;
+        padding: 0.5em 1.2em;
+        min-height: 2.5em;
     }
-
-    .site-logo {
-        width: 45px;
-        height: 45px;
-        padding: 8px;
-        top: -25px;
+    
+    main {
+        min-height: calc(100vh - 220px);
+        margin-top: 5px;
     }
 }
 
-/* تحسين الفوتر للموبايل */
 @media screen and (max-width: 480px) {
+    body {
+        padding: 10px 5px;
+    }
+    
+    .logo-container {
+        padding: 5px 0 10px;
+    }
+    
+    .brand-title {
+        font-size: 2.2rem;
+    }
+    
+    .brand-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .description {
+        font-size: 0.9rem;
+        margin-top: 8px;
+    }
+    
+    .buttons-container.active {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+        padding: 5px;
+        max-height: calc(100vh - 170px);
+    }
+    
+    .tool-card {
+        padding: 6px;
+        border-radius: 20px;
+    }
+    
+    .card-content {
+        border-radius: 16px;
+        padding: 10px 8px;
+        min-height: 140px;
+    }
+    
+    .tool-card h2 {
+        font-size: 1.1rem;
+        margin: 5px 0;
+    }
+    
+    .card-description {
+        font-size: 0.8rem;
+        margin: 4px 0;
+        height: 2.4em;
+        max-height: 2.4em;
+        -webkit-line-clamp: 2;
+    }
+    
+    .ai-button {
+        font-size: 11px;
+        padding: 0.4em 1em;
+        min-height: 2.2em;
+    }
+    
+    .nav-button svg {
+        width: 18px;
+        height: 18px;
+        margin-bottom: 3px;
+    }
+    
+    .nav-button span {
+        font-size: 10px;
+    }
+    
     footer {
+        padding: 20px 10px 80px;
         margin-top: 20px;
-        padding: 20px;
     }
-
+    
     footer p {
-        font-size: 1rem;
-    }
-
-    .social-link {
-        padding: 10px 20px;
         font-size: 0.9rem;
     }
-
-    .instagram-icon {
-        width: 24px;
-        height: 24px;
+    
+    .social-link {
+        padding: 8px 16px;
     }
+    
+    .instagram-icon {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .social-link span {
+        font-size: 0.9rem;
+    }
+}
+
+/* تأثيرات الحركة */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* إزالة الأقسام غير المستخدمة */
+.tabs-container,
+.tab-button,
+.bottom-nav {
+    display: none;
 }
 
 /* تحسين التفاعلات للشاشات اللمسية */
@@ -417,17 +657,21 @@ footer p {
     }
 }
 
-.logo-container {
-    text-align: center;
-    padding: 20px 0;
-    margin-bottom: 30px;
-    background: none;
-    backdrop-filter: none;
-    border-radius: 0;
+/* تحسين التنسيق للهواتف المحمولة */
+@media (max-width: 768px) {
+    .tool-card {
+        width: calc(50% - 20px);
+    }
+}
+
+@media (max-width: 480px) {
+    .tool-card {
+        width: calc(100% - 15px);
+    }
 }
 
 .brand-title {
-    font-size: 4rem;
+    font-size: 3.5rem;
     margin: 0;
     padding: 0;
     line-height: 1;
@@ -439,7 +683,7 @@ footer p {
 }
 
 .brand-subtitle {
-    font-size: 2rem;
+    font-size: 1.3rem;
     margin: 5px 0;
     padding: 0;
     line-height: 1;
@@ -450,89 +694,23 @@ footer p {
     font-weight: 500;
 }
 
-.description {
-    font-size: 1.3rem;
-    margin: 15px 0 0;
-    padding: 0;
-    line-height: 1.4;
-    color: #ffffff;
-    opacity: 0.9;
-    font-weight: 300;
+/* نزيل أي حدود زرقاء على اليسار */
+* {
+    outline: none;
 }
 
-.logo {
-    max-width: 300px;
-    height: auto;
-    transition: transform 0.3s ease;
+html, body {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    overflow-x: hidden;
 }
 
-.logo:hover {
-    transform: scale(1.05);
-}
-
-@media screen and (max-width: 480px) {
-    .logo {
-        max-width: 200px;
-    }
-    .brand-title {
-        font-size: 2.5rem;
-    }
-    .brand-subtitle {
-        font-size: 1.4rem;
-        letter-spacing: 6px;
-    }
-}
-
-.tabs-container {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    margin-top: 30px;
-    margin-bottom: 20px;
-}
-
-.tab-button {
-    padding: 17px 40px;
-    border-radius: 50px;
-    cursor: pointer;
-    border: 0;
-    background-color: #2d4356;
-    color: #ffffff;
-    box-shadow: rgb(0 0 0 / 20%) 0 0 8px;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    font-size: 15px;
-    transition: all 0.3s ease;
-    font-family: 'Tajawal', sans-serif;
-}
-
-.tab-button:hover {
-    letter-spacing: 3px;
-    background-color: #4a90e2;
-    color: #ffffff;
-    box-shadow: rgb(74 144 226 / 30%) 0px 7px 29px 0px;
-}
-
-.tab-button:active {
-    letter-spacing: 3px;
-    background-color: #357abd;
-    color: #ffffff;
-    box-shadow: none;
-    transform: translateY(10px);
-    transition: 100ms;
-}
-
-.tab-button.active {
-    letter-spacing: 3px;
-    background-color: #4a90e2;
-    color: #ffffff;
-    box-shadow: rgb(74 144 226 / 30%) 0px 7px 29px 0px;
-}
-
-.buttons-container {
+html::-webkit-scrollbar, body::-webkit-scrollbar {
     display: none;
+    width: 0;
 }
 
-.buttons-container.active {
-    display: grid;
+:focus {
+    outline: none !important;
 }
+
