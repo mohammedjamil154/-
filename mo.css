@@ -88,7 +88,7 @@ header p {
 
 main {
     position: relative;
-    min-height: calc(100vh - 280px);
+    min-height: calc(100vh - 180px);
     padding-bottom: 80px;
     width: 100%;
     max-width: 1400px;
@@ -273,26 +273,7 @@ main {
 }
 
 footer {
-    margin-top: 40px;
-    padding: 30px;
-    text-align: center;
-    width: 100%;
-    background: rgba(45, 67, 86, 0.7);
-    backdrop-filter: blur(20px);
-    border-top: 1px solid rgba(74, 144, 226, 0.2);
-    color: #ffffff;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    box-sizing: border-box;
-    padding-bottom: 100px;
-}
-
-footer p {
-    font-size: 1.1rem;
-    color: #cccccc;
-    font-weight: 500;
+    display: none;
 }
 
 .social-link {
@@ -517,8 +498,9 @@ footer p {
     }
     
     main {
-        min-height: calc(100vh - 220px);
+        min-height: calc(100vh - 180px);
         margin-top: 5px;
+        padding-bottom: 70px;
     }
 }
 
@@ -555,18 +537,18 @@ footer p {
         padding: 6px;
         border-radius: 20px;
     }
-    
+
     .card-content {
         border-radius: 16px;
         padding: 10px 8px;
         min-height: 140px;
     }
-    
+
     .tool-card h2 {
         font-size: 1.1rem;
         margin: 5px 0;
     }
-    
+
     .card-description {
         font-size: 0.8rem;
         margin: 4px 0;
@@ -574,7 +556,7 @@ footer p {
         max-height: 2.4em;
         -webkit-line-clamp: 2;
     }
-    
+
     .ai-button {
         font-size: 11px;
         padding: 0.4em 1em;
@@ -591,26 +573,10 @@ footer p {
         font-size: 10px;
     }
     
-    footer {
-        padding: 20px 10px 80px;
-        margin-top: 20px;
-    }
-    
-    footer p {
-        font-size: 0.9rem;
-    }
-    
-    .social-link {
-        padding: 8px 16px;
-    }
-    
-    .instagram-icon {
-        width: 20px;
-        height: 20px;
-    }
-    
-    .social-link span {
-        font-size: 0.9rem;
+    main {
+        min-height: calc(100vh - 160px);
+        margin-top: 5px;
+        padding-bottom: 60px;
     }
 }
 

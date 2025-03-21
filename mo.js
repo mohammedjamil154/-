@@ -327,22 +327,22 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // مراقبة ظهور البطاقات
-    const observerOptions = {
-        root: container,
-        threshold: 0.6
-    };
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('active');
-            } else {
-                entry.target.classList.remove('active');
-            }
-        });
-    }, observerOptions);
-    
-    cards.forEach(card => observer.observe(card));
+const observerOptions = {
+  root: container,
+  threshold: 0.6
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('active');
+    } else {
+      entry.target.classList.remove('active');
+    }
+  });
+}, observerOptions);
+
+cards.forEach(card => observer.observe(card));
 
     // إزالة الخط الأزرق عند التمرير
     document.body.style.overflowX = 'hidden';
