@@ -11,6 +11,7 @@ body {
     align-items: center;
     justify-content: center;
     min-height: 100vh;
+    overflow-x: hidden;
 }
 
 header {
@@ -44,13 +45,19 @@ header p {
 }
 
 .buttons-container {
-    display: none;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.5s ease-in-out;
+    transition: opacity 0.3s ease, visibility 0s 0.3s;
+    position: absolute;
+    width: 100%;
+    transform: translateZ(0);
 }
 
 .buttons-container.active {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease, visibility 0s;
+    position: relative;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 15px;
@@ -58,8 +65,6 @@ header p {
     max-width: 1400px;
     padding: 15px;
     box-sizing: border-box;
-    opacity: 1;
-    visibility: visible;
     max-height: calc(100vh - 250px);
     overflow-y: auto;
     overflow-x: hidden;
@@ -88,8 +93,10 @@ header p {
 
 main {
     position: relative;
-    min-height: calc(100vh - 180px);
-    padding-bottom: 80px;
+    height: auto;
+    min-height: auto;
+    padding-bottom: 0;
+    margin-bottom: 80px;
     width: 100%;
     max-width: 1400px;
     margin-top: 10px;
@@ -102,6 +109,8 @@ main {
     background: none;
     backdrop-filter: none;
     border-radius: 0;
+    will-change: transform;
+    transform: translateZ(0);
 }
 
 .tool-card {
@@ -344,6 +353,8 @@ footer {
     transition: all 0.3s ease;
     font-family: 'Tajawal', sans-serif;
     position: relative;
+    transform: translateZ(0);
+    backface-visibility: hidden;
 }
 
 .nav-button svg {
@@ -498,9 +509,11 @@ footer {
     }
     
     main {
-        min-height: calc(100vh - 180px);
+        height: auto;
+        min-height: auto;
         margin-top: 5px;
-        padding-bottom: 70px;
+        padding-bottom: 0;
+        margin-bottom: 70px;
     }
 }
 
@@ -574,9 +587,11 @@ footer {
     }
     
     main {
-        min-height: calc(100vh - 160px);
+        height: auto;
+        min-height: auto;
         margin-top: 5px;
-        padding-bottom: 60px;
+        padding-bottom: 0;
+        margin-bottom: 60px;
     }
 }
 
@@ -678,5 +693,42 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
 
 :focus {
     outline: none !important;
+}
+
+/* تحسين أداء الانتقالات للقسم النشط */
+.loaded .buttons-container {
+    transition: opacity 0.2s ease, visibility 0s 0.2s;
+}
+
+.loaded .buttons-container.active {
+    transition: opacity 0.2s ease, visibility 0s;
+}
+
+/* تحسين أداء زر التنقل */
+.nav-button {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
+
+/* تحسين ظهور العناصر في GitHub */
+.logo-container {
+    will-change: transform;
+    transform: translateZ(0);
+}
+
+/* تحسين أداء الكروت على الأجهزة ذات الأداء المنخفض */
+.reduced-motion .tool-card {
+    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+}
+
+/* تقليل تأثيرات الرسوم المتحركة للأجهزة المحمولة */
+@media (max-width: 768px) {
+    .buttons-container {
+        transition: opacity 0.2s ease;
+    }
+    
+    .tool-card:hover {
+        transform: translateY(-5px);
+    }
 }
 

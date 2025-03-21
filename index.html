@@ -251,25 +251,25 @@
     </main>
 
     <nav class="mobile-nav">
-        <button class="nav-button active" onclick="switchTab('ai')">
+        <button class="nav-button active" onclick="switchTab('ai', event)">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
             </svg>
             <span>الذكاء الاصطناعي</span>
         </button>
-        <button class="nav-button" onclick="switchTab('movies')">
+        <button class="nav-button" onclick="switchTab('movies', event)">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M4 4h16v16H4zM4 8h16M4 12h16M4 16h16"/>
             </svg>
             <span>الأفلام</span>
         </button>
-        <button class="nav-button" onclick="switchTab('books')">
+        <button class="nav-button" onclick="switchTab('books', event)">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M4 19.5v-15A2.5 2.5 0 016.5 2H20v20H6.5a2.5 2.5 0 010-5H20"/>
             </svg>
             <span>تورنت</span>
         </button>
-        <button class="nav-button" onclick="switchTab('bots')">
+        <button class="nav-button" onclick="switchTab('bots', event)">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <rect x="3" y="11" width="18" height="10" rx="2"/>
                 <circle cx="12" cy="5" r="2"/>
@@ -279,12 +279,33 @@
         </button>
     </nav>
 
+    <style>
+        /* تحسينات الأداء على GitHub */
+        body {
+            overflow-x: hidden; /* منع التمرير الأفقي */
+        }
+        
+        .reduced-motion .buttons-container {
+            transition: opacity 0.2s ease-out; /* تبسيط الحركة */
+        }
+        
+        .loaded .buttons-container {
+            will-change: auto; /* تحسين الأداء بعد التحميل */
+        }
+        
+        /* تحسين أداء العناصر المتحركة */
+        .tool-card {
+            backface-visibility: hidden;
+            transform: translateZ(0);
+        }
+    </style>
+
     <script>
         function redirectTo(url) {
             window.open(url, '_blank');
         }
         
-        function switchTab(tabName) {
+        function switchTab(tabName, event) {
             // إخفاء جميع الأقسام
             document.getElementById('ai-section').classList.remove('active');
             document.getElementById('movies-section').classList.remove('active');
